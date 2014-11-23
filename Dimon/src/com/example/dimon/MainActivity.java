@@ -24,9 +24,9 @@ import com.parse.ParseQuery.CachePolicy;
 
 public class MainActivity extends ActionBarActivity implements OnItemClickListener {
 
-	private EditText mTaskInput;
-	private ListView mListView;
-	private TaskAdapter mAdapter;
+	private EditText mTaskInput; //this describes what is in the textbox field
+	private ListView mListView;// this is the view that is under textbox
+	private TaskAdapter mAdapter;//this is used to covert EditText into ListView
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,8 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		
 	}
 	
+	//got these from one of the Parse tutorial
+	
 	public void updateData(){
 		  ParseQuery<Task> query = ParseQuery.getQuery(Task.class);
 		  query.setCachePolicy(CachePolicy.CACHE_THEN_NETWORK);
@@ -60,6 +62,8 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		      }
 		  });
 		}
+	
+	//this was gotten from google
 	
 	public void createTask(View v) 
 	{
