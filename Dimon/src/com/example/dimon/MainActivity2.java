@@ -34,27 +34,27 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity implements OnItemClickListener {
+public class MainActivity2 extends Activity implements OnItemClickListener {
 
-	private EditText mTaskInput; //this describes what is in the textbox field
-	private ListView mListView;// this is the view that is under textbox
-	private TaskAdapter mAdapter;//this is used to covert EditText into ListView
-	Button button;
+	private EditText mTaskInput2; //this describes what is in the textbox field
+	private ListView mListView2;// this is the view that is under textbox
+	private TaskAdapter mAdapter2;//this is used to covert EditText into ListView
+	Button button3;
 	Intent intent;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.owe_me);
 		
 		Parse.initialize(this, "qVN3MRKBp42CrVX7AwN8sriRt7gwHtyOqAysl90R", "51k427k2YqLC5sWOAK5oKeUYTAydABJgc9UdtoDc");
-		ParseObject.registerSubclass(Task.class);
-		mTaskInput = (EditText) findViewById(R.id.task_input);
-		mListView = (ListView) findViewById(R.id.task_list);
+		ParseObject.registerSubclass(TaskOwedToMe.class);
+		mTaskInput2 = (EditText) findViewById(R.id.task_input2);
+		mListView2 = (ListView) findViewById(R.id.task_list2);
 		
-		mAdapter = new TaskAdapter(this, new ArrayList<Task>());
-		mListView.setAdapter(mAdapter);
-		mListView.setOnItemClickListener(this);
+		mAdapter2 = new TaskAdapter(this, new ArrayList<Task>()); //Davis to Davis - fix this later
+		mListView2.setAdapter(mAdapter2);
+		mListView2.setOnItemClickListener(this);
 		
 		updateData();
 		addListenerOnButton();
@@ -63,16 +63,15 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	public void addListenerOnButton() 
 	{
 		 
-		final Context context = this;
  
-		button = (Button) findViewById(R.id.button1);
+		button3 = (Button) findViewById(R.id.button3);
  
-		button.setOnClickListener(new View.OnClickListener() {
+		button3.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View view) 
 			
 			{
-			    intent = new Intent(MainActivity.this, Test.class);
+			    intent = new Intent(MainActivity2.this, MainActivity.class);
                 startActivity(intent);   
  
 			}
@@ -91,8 +90,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		      @Override
 		      public void done(List<Task> tasks, ParseException error) {
 		          if(tasks != null){
-		              mAdapter.clear();
-		              mAdapter.addAll(tasks);
+		              mAdapter2.clear();
+		              mAdapter2.addAll(tasks);
 		          }
 		      }
 		  });
@@ -102,19 +101,19 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	
 	public void createTask(View v) 
 	{
-	      if (mTaskInput.getText().length() >= 1){
+	      if (mTaskInput2.getText().length() >= 1){
 	          Task t = new Task();
-	          t.setDescription(mTaskInput.getText().toString());
+	          t.setDescription(mTaskInput2.getText().toString());
 	          t.setCompleted(false);
 	          t.saveEventually();
-	          mAdapter.insert(t, 0);
-	          mTaskInput.setText("");
+	          mAdapter2.insert(t, 0);
+	          mTaskInput2.setText("");
 	      }
 	  }
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-	  Task task = mAdapter.getItem(position);
+	  Task task = mAdapter2.getItem(position);
 	  TextView taskDescription = (TextView) view.findViewById(R.id.task_description);
 
 	  task.setCompleted(!task.isCompleted());
