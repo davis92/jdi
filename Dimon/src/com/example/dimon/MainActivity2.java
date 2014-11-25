@@ -83,15 +83,15 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	//got these from one of the Parse tutorial
 	
 	public void updateData(){
-		  ParseQuery<Task> query = ParseQuery.getQuery(Task.class);
+		  ParseQuery<TaskOwedToMe> query = ParseQuery.getQuery(TaskOwedToMe.class);
 		  query.setCachePolicy(CachePolicy.CACHE_THEN_NETWORK);
-		  query.findInBackground(new FindCallback<Task>() {
+		  query.findInBackground(new FindCallback<TaskOwedToMe>() {
 		          
 		      @Override
-		      public void done(List<Task> tasks, ParseException error) {
-		          if(tasks != null){
+		      public void done(List<TaskOwedToMe> TaskOwedToMe, ParseException error) {
+		          if(TaskOwedToMe != null){
 		              mAdapter2.clear();
-		              mAdapter2.addAll(tasks);
+		              //mAdapter2.addAll(TaskOwedToMe); ->Fix this after the rest works
 		          }
 		      }
 		  });
