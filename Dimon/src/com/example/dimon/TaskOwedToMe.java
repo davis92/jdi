@@ -3,7 +3,7 @@ package com.example.dimon;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-@ParseClassName("TaskOwedToMe") //this is the name of the table in Parse for our data of things people owe the user
+@ParseClassName("Task2") //this is the name of the table in Parse for our data of things people owe the user
 
 public class TaskOwedToMe extends ParseObject{
   

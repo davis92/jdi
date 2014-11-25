@@ -7,5 +7,7 @@
     <string name="add_button">Add</string>
     <string name="i_owe">What do I owe people?</string>
     <string name="owe_me">What do people owe me?</string>
+    <string name="credit">This is what you owe people:</string>
+    <string name="debt">This is what people owe you:</string>
 
 </resources>

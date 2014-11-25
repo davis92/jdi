@@ -38,7 +38,7 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 
 	private EditText mTaskInput2; //this describes what is in the textbox field
 	private ListView mListView2;// this is the view that is under textbox
-	private TaskAdapter mAdapter2;//this is used to covert EditText into ListView
+	private TaskAdapterOwedToMe mAdapter2;//this is used to covert EditText into ListView
 	Button button3;
 	Intent intent;
 	
@@ -52,7 +52,7 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		mTaskInput2 = (EditText) findViewById(R.id.task_input2);
 		mListView2 = (ListView) findViewById(R.id.task_list2);
 		
-		mAdapter2 = new TaskAdapter(this, new ArrayList<Task>()); //Davis to Davis - fix this later
+		mAdapter2 = new TaskAdapterOwedToMe (this, new ArrayList<TaskOwedToMe>()); //Davis to Davis - fix this later
 		mListView2.setAdapter(mAdapter2);
 		mListView2.setOnItemClickListener(this);
 		
@@ -88,10 +88,10 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		  query.findInBackground(new FindCallback<TaskOwedToMe>() {
 		          
 		      @Override
-		      public void done(List<TaskOwedToMe> TaskOwedToMe, ParseException error) {
-		          if(TaskOwedToMe != null){
+		      public void done(List<TaskOwedToMe> t1, ParseException error) {
+		          if(t1 != null){
 		              mAdapter2.clear();
-		              //mAdapter2.addAll(TaskOwedToMe); ->Fix this after the rest works
+		              mAdapter2.addAll(t1);
 		          }
 		      }
 		  });
@@ -102,18 +102,18 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	public void createTask(View v) 
 	{
 	      if (mTaskInput2.getText().length() >= 1){
-	          Task t = new Task();
-	          t.setDescription(mTaskInput2.getText().toString());
-	          t.setCompleted(false);
-	          t.saveEventually();
-	          mAdapter2.insert(t, 0);
+	    	  TaskOwedToMe p = new TaskOwedToMe();
+	          p.setDescription(mTaskInput2.getText().toString());
+	          p.setCompleted(false);
+	          p.saveEventually();
+	          mAdapter2.insert(p, 0);
 	          mTaskInput2.setText("");
 	      }
 	  }
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-	  Task task = mAdapter2.getItem(position);
+	  TaskOwedToMe task = mAdapter2.getItem(position);
 	  TextView taskDescription = (TextView) view.findViewById(R.id.task_description);
 
 	  task.setCompleted(!task.isCompleted());

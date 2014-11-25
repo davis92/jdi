@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			public void onClick(View view) 
 			
 			{
-			    intent = new Intent(MainActivity.this, Test.class);
+			    intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);   
  
 			}
@@ -89,10 +89,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		  query.findInBackground(new FindCallback<Task>() {
 		          
 		      @Override
-		      public void done(List<Task> tasks, ParseException error) {
-		          if(tasks != null){
+		      public void done(List<Task> t2, ParseException error) {
+		          if(t2 != null){
 		              mAdapter.clear();
-		              mAdapter.addAll(tasks);
+		              mAdapter.addAll(t2);
 		          }
 		      }
 		  });
