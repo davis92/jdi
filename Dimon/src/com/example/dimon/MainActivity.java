@@ -3,14 +3,18 @@ package com.example.dimon;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,16 +26,27 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQuery.CachePolicy;
 
-public class MainActivity extends ActionBarActivity implements OnItemClickListener {
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+public class MainActivity extends Activity implements OnItemClickListener {
 
 	private EditText mTaskInput; //this describes what is in the textbox field
 	private ListView mListView;// this is the view that is under textbox
 	private TaskAdapter mAdapter;//this is used to covert EditText into ListView
+	Button button;
+	Intent intent;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		addListenerOnButton();
 		
 		Parse.initialize(this, "qVN3MRKBp42CrVX7AwN8sriRt7gwHtyOqAysl90R", "51k427k2YqLC5sWOAK5oKeUYTAydABJgc9UdtoDc");
 		ParseObject.registerSubclass(Task.class);
@@ -44,6 +59,26 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		
 		updateData();
 		
+	}
+	
+	public void addListenerOnButton() {
+		 
+		final Context context = this;
+ 
+		button = (Button) findViewById(R.id.button1);
+ 
+		button.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) 
+			
+			{
+			    intent = new Intent(MainActivity.this, Test.class);
+                startActivity(intent);   
+ 
+			}
+ 
+		});
+ 
 	}
 	
 	//got these from one of the Parse tutorial
