@@ -36,6 +36,17 @@
             android:name=".MainActivity2"
             android:label="@string/debt" >
             </activity>
+            
+            <activity
+            android:name=".LoginPage"
+            android:label="Login" >
+            </activity>
+            
+            <activity
+            android:name=".MakeAccount"
+            android:label="Create an Account" >
+            </activity>
+            
     </application>
 
 </manifest>

@@ -9,5 +9,12 @@
     <string name="owe_me">What do people owe me?</string>
     <string name="credit">This is what you owe people:</string>
     <string name="debt">This is what people owe you:</string>
+    <string name="pass">Password:</string>
+    <string name="user">Username:</string>
+    <string name="need_account">Need an account?</string>
+    <string name="have_account">Have an account? Sign in here.</string>
+    <string name="in">Sign In.</string>
+    <string name="up">Sign Up</string>
+    <string name="action_so">Sign Out</string>
 
 </resources>
