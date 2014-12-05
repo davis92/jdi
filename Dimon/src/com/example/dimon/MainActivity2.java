@@ -41,6 +41,15 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		
 		Parse.initialize(this, "qVN3MRKBp42CrVX7AwN8sriRt7gwHtyOqAysl90R", "51k427k2YqLC5sWOAK5oKeUYTAydABJgc9UdtoDc");
 		ParseObject.registerSubclass(TaskOwedToMe.class);
+		
+		//the following code gets who the current user and if there is no user (signing out) then the app user is sent to the beginning og the app (the login)
+		ParseUser currentUser = ParseUser.getCurrentUser();
+		if(currentUser == null){
+		  Intent intent = new Intent(this, LoginPage.class);
+		  startActivity(intent);
+		  finish();
+		}
+		
 		mTaskInput2 = (EditText) findViewById(R.id.task_input2);
 		mListView2 = (ListView) findViewById(R.id.task_list2);
 		
@@ -133,13 +142,27 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) //from parse guide on signing out of an user account
 			{
-			case R.id.action_so: 
-				ParseUser.logOut();
-				Intent intent = new Intent(this, LoginPage.class);
-				startActivity(intent);
-				finish();
-				return true; 
-			} 
+				case R.id.action_so: 
+					ParseUser.logOut();
+					Intent intent = new Intent(this, LoginPage.class);
+					startActivity(intent);
+					finish();
+					return true; 
+					
+				/*case R.id.close_app: 
+					android.os.Process.killProcess(android.os.Process.myPid());
+		            finish();
+		            System.exit(0);
+					return true; 
+					
+				case R.id.sign_close: 
+					ParseUser.logOut();
+					android.os.Process.killProcess(android.os.Process.myPid());
+		            finish();
+		            System.exit(0);
+					return true;*/ //apparently it is not good practice to allow the user to quit the app from anywhere in the app. I think it is stupid, but I have included the code here so you know I know how to close out an app (or at last close the current activity) 
+					
+				}
 			return false; 
 		}
 	}

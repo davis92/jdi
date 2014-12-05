@@ -18,9 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:windowSoftInputMode="stateHidden"
             android:hint="@string/task_hint"
-            android:inputType="text" >
-
+            android:inputType="text" 
+             >
+           
             <requestFocus />
         </EditText>
 

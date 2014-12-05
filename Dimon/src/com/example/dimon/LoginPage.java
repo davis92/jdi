@@ -35,7 +35,7 @@ public class LoginPage extends Activity {
 		return true;
 	}
 
-	public void signIn(final View v){
+	public void LogMeIn(final View v){
 		v.setEnabled(false);
 		ParseUser.logInInBackground(mUsernameInput.getText().toString(), mPasswordInput.getText().toString(), new LogInCallback() {
 			@Override

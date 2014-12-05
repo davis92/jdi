@@ -17,6 +17,12 @@
         android:orientation="vertical" >
 
         <TextView
+            android:id="@+id/error_output"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user" />
@@ -60,12 +66,5 @@
         android:textSize="17sp"
         android:onClick="gotoLogin"
         android:text="@string/have_account" />
-    
-    <TextView
-  android:id="@+id/error_output"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_gravity="center_horizontal"
-  android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>

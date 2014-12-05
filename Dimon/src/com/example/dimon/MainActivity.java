@@ -34,6 +34,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	Button button;
 	Intent intent;
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -115,6 +116,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	          mTaskInput.setText("");
 	      }
 	  }
+	
 
 	@Override //from parse tutorial
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -142,9 +144,9 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	}
 
 	@Override
-	//this signs person out
+	//this signs person out or makes them close the app or both
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) //from parse guide on how to sign out
+		switch (item.getItemId()) 
 		{
 		case R.id.action_so: 
 			ParseUser.logOut();
@@ -152,7 +154,21 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			startActivity(intent);
 			finish();
 			return true; 
-		} 
+			/*case R.id.close_app: 
+			android.os.Process.killProcess(android.os.Process.myPid());
+            finish();
+            System.exit(0);
+			return true; 
+			
+		case R.id.sign_close: 
+			ParseUser.logOut();
+			android.os.Process.killProcess(android.os.Process.myPid());
+            finish();
+            System.exit(0);
+			return true;*/ //apparently it is not good practice to allow the user to quit the app from anywhere in the app. I think it is stupid, but I have included the code here so you know I know how to close out an app (or at last close the current activity) 	
+		
+			
+		}
 		return false; 
 	}
 }
