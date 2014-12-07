@@ -106,7 +106,7 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	      if (mTaskInput2.getText().length() >= 1){
 	    	  TaskOwedToMe p = new TaskOwedToMe();
 	          p.setACL(new ParseACL(ParseUser.getCurrentUser()));
-	          //p.setUser(ParseUser.getCurrentUser());
+	          p.setUser(ParseUser.getCurrentUser());
 	          p.setDescription(mTaskInput2.getText().toString());
 	          p.setCompleted(false);
 	          p.saveEventually();

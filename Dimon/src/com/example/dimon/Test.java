@@ -25,8 +25,6 @@ public class Test extends Activity
 		public void addListenerOnButton1() 
 		{
 			 
-			final Context context = this;
-	 
 			button1 = (Button) findViewById(R.id.button1);
 	 
 			button1.setOnClickListener(new View.OnClickListener() {

@@ -2,6 +2,7 @@ package com.example.dimon;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("Task2") //this is the name of the table in Parse for our data of things people owe the user
 
@@ -26,4 +27,7 @@ public TaskOwedToMe(){
   public void setDescription(String description){
       put("description", description);
   }
+  public void setUser(ParseUser currentUser) {
+		put("user", currentUser);
+	}
 }
