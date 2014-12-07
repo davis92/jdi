@@ -99,7 +99,6 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		  });
 		}
 	
-	//this was gotten from google
 	
 	public void createTask(View v) 
 	{

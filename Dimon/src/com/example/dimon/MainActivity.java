@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		  });
 		}
 	
-	//this was gotten from google
+// this was from parse tutorial (coded it ourselves, but needed the guide as a book of codes to know what options we had)
 	
 	public void createTask(View v) 
 	{
