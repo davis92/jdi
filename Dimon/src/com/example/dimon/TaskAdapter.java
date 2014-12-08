@@ -31,12 +31,6 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
       descriptionView.setText(task.getDescription());
 
-      if(task.isCompleted()){
-          descriptionView.setPaintFlags(descriptionView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-      }else{
-          descriptionView.setPaintFlags(descriptionView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-      }
-
       return convertView;
   }
 

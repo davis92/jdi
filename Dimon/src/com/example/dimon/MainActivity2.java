@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,6 +34,12 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	private TaskAdapterOwedToMe mAdapter2;//this is used to covert EditText into ListView
 	Button button3;
 	Intent intent;
+	Button deleteButton;
+	int backgroundColor;
+	int cyan = Color.CYAN;
+	TaskOwedToMe task;
+	TextView taskDescription2;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -117,18 +124,32 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 
 	@Override //from parse tutorial
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-	  TaskOwedToMe task = mAdapter2.getItem(position);
-	  TextView taskDescription2 = (TextView) view.findViewById(R.id.task_description2);
-
-	  task.setCompleted(!task.isCompleted());
-
-	  if(task.isCompleted()){ //@Stefan - this is one of two parts that strikes out the text. You might be able to make it delete
-	      taskDescription2.setPaintFlags(taskDescription2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-	  }else{
-	      taskDescription2.setPaintFlags(taskDescription2.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-	  }
-
-	  task.saveEventually();
+		  task = mAdapter2.getItem(position);
+		  taskDescription2 = (TextView) view.findViewById(R.id.task_description2); //changed this from task_description
+		  task.setCompleted(!task.isCompleted());
+		  if (task.isCompleted()){
+			  taskDescription2.setBackgroundColor(Color.CYAN);
+			  backgroundColor = Color.CYAN;
+		  }
+		  else{
+			  taskDescription2.setBackgroundColor(Color.TRANSPARENT);
+			  backgroundColor = Color.TRANSPARENT;
+		  }
+		}
+		
+	public void deleteTask(View v){
+		if (backgroundColor == cyan){
+			mAdapter2.remove(task);
+			task.deleteEventually();
+		}
+		deleteButton = (Button) findViewById(R.id.deleteButton);
+		deleteButton.setOnLongClickListener(new View.OnLongClickListener() { //sets up delete all function upon 
+			public boolean onLongClick(View v) {                            //holding down on the delete button
+				mAdapter2.clear();
+				task.deleteEventually();
+				return true;
+			}
+		});
 	}
 	
 	@Override

@@ -30,8 +30,21 @@
             android:id="@+id/submit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@color/darkblue"
             android:onClick="createTask"
-            android:text="@string/add_button" />
+            android:text="@string/add_button"
+            android:textColor="@color/white" />
+        
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/darkblue"
+            android:onClick="deleteTask"
+            android:text="@string/delete_button"
+            android:textColor="@color/white" />
+        
     </LinearLayout>
 
     <ListView
@@ -46,7 +59,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.17"
-        android:text="@string/i_owe" />
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+       	android:layout_marginBottom="7dp"
+        android:background="@color/darkblue"
+        android:text="@string/i_owe"
+        android:textSize="17sp"
+        android:textColor="@color/white" />
     
 
 

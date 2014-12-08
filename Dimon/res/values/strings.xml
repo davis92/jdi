@@ -5,10 +5,10 @@
     <string name="task_hint">What\'s the task?</string>
     <string name="action_settings">Settings</string>
     <string name="add_button">Add</string>
-    <string name="i_owe">What do I owe people?</string>
-    <string name="owe_me">What do people owe me?</string>
-    <string name="credit">This is what you owe people:</string>
-    <string name="debt">This is what people owe you:</string>
+    <string name="i_owe">What Do I Owe People?</string>
+    <string name="owe_me">What Do People Owe Me?</string>
+    <string name="credit">This Is What You Owe People:</string>
+    <string name="debt">This Is What People Owe You:</string>
     <string name="pass">Password:</string>
     <string name="user">Username:</string>
     <string name="need_account">Need an account?</string>
@@ -18,5 +18,12 @@
     <string name="action_so">Sign out</string>
     <string name="close_app">Close app</string>
     <string name="sign_close">Sign out and close app</string>
+    <string name ="delete_button">Delete</string>
+    <string name ="dialog_question">Are you sure you want to delete all?</string>
+    <string name ="dialog_yes">yes</string>
+    <string name ="dialog_no">no</string>
+    <string name ="date">Date</string>
+    <color name ="darkblue">#000080</color>
+    <color name = "white">#ffffff</color>
 
 </resources>

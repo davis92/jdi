@@ -3,8 +3,11 @@ package com.example.dimon;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.support.v4.app.DialogFragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +29,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseQuery.CachePolicy;
 import com.parse.ParseUser;
 
+@SuppressLint("NewApi")
 public class MainActivity extends Activity implements OnItemClickListener {
 
 	private EditText mTaskInput; //this describes what is in the textbox field
@@ -33,7 +37,11 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	private TaskAdapter mAdapter;//this is used to covert EditText into ListView
 	Button button;
 	Intent intent;
-	
+	Button deleteButton;
+	int backgroundColor;
+	int cyan = Color.CYAN;
+	Task task;
+	TextView taskDescription;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,21 +126,40 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	  }
 	
 
-	@Override //from parse tutorial
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-	  Task task = mAdapter.getItem(position);
-	  TextView taskDescription = (TextView) view.findViewById(R.id.task_description);
-
+	@Override 
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //from parse tutorial
+	  task = mAdapter.getItem(position);
+	  taskDescription = (TextView) view.findViewById(R.id.task_description);
 	  task.setCompleted(!task.isCompleted());
-
-	  if(task.isCompleted()){ //@Stefan - this is one of two parts that strikes out the text. You might be able to make it delete
-	      taskDescription.setPaintFlags(taskDescription.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-	  }else{
-	      taskDescription.setPaintFlags(taskDescription.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+	  if (task.isCompleted()){ //checks to see if button has been clicked
+		  taskDescription.setBackgroundColor(Color.CYAN);
+		  backgroundColor = Color.CYAN;
 	  }
-
-	  task.saveEventually();
+	  else{ //returns item view to original color
+		  taskDescription.setBackgroundColor(Color.TRANSPARENT);
+		  backgroundColor = Color.TRANSPARENT;
+	  }
 	}
+	
+	public void deleteTask(View v){ //connected to action upon clicking delete button
+		if (backgroundColor == cyan){ //checks to see if item has been clicked
+			mAdapter.remove(task);
+			task.deleteEventually();
+		}
+		deleteButton = (Button) findViewById(R.id.deleteButton);
+		deleteButton.setOnLongClickListener(new View.OnLongClickListener() { //sets up delete all function upon 
+			public boolean onLongClick(View v) {                            //holding down on the delete button
+				mAdapter.clear();
+				task.deleteEventually();
+				return true;
+			}
+		});
+	}
+	
+	//public void showDatePickerDialog(View v) {
+	    //DialogFragment newFragment = new DatePickerFragment();
+	    //newFragment.show(getFragmentManager(), "datePicker");
+	//}
 	
 	///this is the sign out function. A few bugs I'll figure this out if we have time.
 	

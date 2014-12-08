@@ -9,13 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.47"
-        android:text="@string/i_owe" />
+        android:background="@color/darkblue"
+        android:text="@string/i_owe"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.47"
-        android:text="@string/owe_me" />
+        android:background="@color/white"
+        android:text="@string/owe_me"
+        android:textColor="@color/darkblue" />
 
 </LinearLayout>

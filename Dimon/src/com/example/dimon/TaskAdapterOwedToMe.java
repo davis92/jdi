@@ -33,12 +33,6 @@ public class TaskAdapterOwedToMe extends ArrayAdapter<TaskOwedToMe> {
 
       descriptionView.setText(taskowedme2.getDescription());
 
-      if(taskowedme2.isCompleted()){
-          descriptionView.setPaintFlags(descriptionView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-      }else{
-          descriptionView.setPaintFlags(descriptionView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-      }
-
       return convertView;
   }
 
