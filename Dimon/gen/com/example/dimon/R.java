@@ -1080,6 +1080,7 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int ic_launcher=0x7f020057;
+        public static final int splash_screen=0x7f020058;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1093,8 +1094,8 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050053;
-        public static final int action_so=0x7f050054;
+        public static final int action_settings=0x7f050054;
+        public static final int action_so=0x7f050055;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1152,12 +1153,13 @@ containing a value of this type.
         public static final int signUpButton=0x7f05004c;
         public static final int sign_in=0x7f05004b;
         public static final int sign_up=0x7f05004f;
+        public static final int splashscreen=0x7f050051;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int submit_button=0x7f05003d;
         public static final int tabMode=0x7f050002;
-        public static final int task_description=0x7f050051;
-        public static final int task_description2=0x7f050052;
+        public static final int task_description=0x7f050052;
+        public static final int task_description2=0x7f050053;
         public static final int task_input=0x7f05003c;
         public static final int task_input2=0x7f050045;
         public static final int task_list=0x7f05003f;
@@ -1224,9 +1226,10 @@ containing a value of this type.
         public static final int owe_me=0x7f03001b;
         public static final int sign_in=0x7f03001c;
         public static final int sign_up=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
-        public static final int task_row_item=0x7f03001f;
-        public static final int task_row_item_owe_me=0x7f030020;
+        public static final int splash_activity=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int task_row_item=0x7f030020;
+        public static final int task_row_item_owe_me=0x7f030021;
     }
     public static final class menu {
         public static final int create=0x7f0c0000;
