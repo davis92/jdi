@@ -39,9 +39,11 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	Intent intent;
 	Button deleteButton;
 	int backgroundColor;
-	int cyan = Color.CYAN;
+	int yellow = Color.YELLOW;
 	Task task;
+	Task remove;
 	TextView taskDescription;
+	List<Task> mainList = new ArrayList<Task>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +64,21 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		mTaskInput = (EditText) findViewById(R.id.task_input);
 		mListView = (ListView) findViewById(R.id.task_list);
 		
-		mAdapter = new TaskAdapter(this, new ArrayList<Task>());
+		mAdapter = new TaskAdapter(this, mainList);
 		mListView.setAdapter(mAdapter);
 		mListView.setOnItemClickListener(this);
 		
 		updateData();
 		addListenerOnButton();
+		
+		deleteButton = (Button) findViewById(R.id.deleteButton);
+		deleteButton.setOnLongClickListener(new View.OnLongClickListener() { //sets up delete all function upon 
+			public boolean onLongClick(View v) {                            //holding down on the delete button
+				mAdapter.clear();
+				mainList.removeAll(mainList);
+				return true;
+			}
+		});
 	}
 	
 	public void addListenerOnButton() 
@@ -132,8 +143,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	  taskDescription = (TextView) view.findViewById(R.id.task_description);
 	  task.setCompleted(!task.isCompleted());
 	  if (task.isCompleted()){ //checks to see if button has been clicked
-		  taskDescription.setBackgroundColor(Color.CYAN);
-		  backgroundColor = Color.CYAN;
+		  taskDescription.setBackgroundColor(Color.YELLOW); //changes background color to yellow
+		  backgroundColor = Color.YELLOW;
 	  }
 	  else{ //returns item view to original color
 		  taskDescription.setBackgroundColor(Color.TRANSPARENT);
@@ -142,18 +153,11 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	}
 	
 	public void deleteTask(View v){ //connected to action upon clicking delete button
-		if (backgroundColor == cyan){ //checks to see if item has been clicked
+		if (backgroundColor == yellow){ //checks to see if item's background has been changed (therefore clicked)
 			mAdapter.remove(task);
 			task.deleteEventually();
+			taskDescription.setBackgroundColor(Color.TRANSPARENT);
 		}
-		deleteButton = (Button) findViewById(R.id.deleteButton);
-		deleteButton.setOnLongClickListener(new View.OnLongClickListener() { //sets up delete all function upon 
-			public boolean onLongClick(View v) {                            //holding down on the delete button
-				mAdapter.clear();
-				task.deleteEventually();
-				return true;
-			}
-		});
 	}
 	
 	//public void showDatePickerDialog(View v) {

@@ -3,6 +3,7 @@ package com.example.dimon;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.color;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;

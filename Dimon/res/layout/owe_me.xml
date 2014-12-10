@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context=".TodoActivity" >
+    tools:context=".TodoActivity"
+    android:background="@color/darkblue" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +21,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/task_hint"
-            android:inputType="text" 
+            android:inputType="text"
+            android:textColor="@color/white" 
             >
 
             <requestFocus />
@@ -31,19 +33,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:background="@color/darkblue"
+            android:background="@color/white"
             android:onClick="createTask"
             android:text="@string/add_button"
-            android:textColor="@color/white" />
+            android:textColor="@color/darkblue" />
         
         <Button
             android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/darkblue"
+            android:background="@color/white"
             android:onClick="deleteTask"
             android:text="@string/delete_button"
-            android:textColor="@color/white" />
+            android:textColor="@color/darkblue" />
         
     </LinearLayout>
 
@@ -62,10 +64,10 @@
         android:layout_marginRight="2dp"
         android:layout_marginLeft="2dp"
        	android:layout_marginBottom="7dp"
-        android:background="@color/darkblue"
+        android:background="@color/white"
         android:text="@string/i_owe"
         android:textSize="17sp"
-        android:textColor="@color/white" />
+        android:textColor="@color/darkblue" />
     
 
 
