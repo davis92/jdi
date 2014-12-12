@@ -1,11 +1,16 @@
 package com.example.dimon;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,6 +51,21 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	TextView taskDescription;
 	List<Task> mainList = new ArrayList<Task>();
 	
+	//for date
+	private TextView text_date;
+	//private DatePicker date_picker;
+	private Button change_date_button;
+
+	private int year;
+	private int month;
+	private int day;
+	
+
+	
+	static final int DATE_DIALOG_ID = 100;
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,6 +91,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		
 		updateData();
 		addListenerOnButton();
+		
+		//date
+		setCurrentDate();
+		addButtonListener();
 		
 		deleteButton = (Button) findViewById(R.id.deleteButton);
 		deleteButton.setOnLongClickListener(new View.OnLongClickListener() { //sets up delete all function upon 
@@ -120,7 +145,6 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		  });
 		}
 	
-	//this was gotten from google
 	
 	public void createTask(View v) 
 	{
@@ -128,7 +152,14 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	          Task t = new Task();
 	          t.setACL(new ParseACL(ParseUser.getCurrentUser()));
 	          t.setUser(ParseUser.getCurrentUser());
-	          t.setDescription(mTaskInput.getText().toString());
+	          String description = mTaskInput.getText().toString();
+	          String Month_Name = monthname(month);
+	          String due_date = " Due: "+ Month_Name+ " "+ day + ", "+year;
+	          description = description + due_date;
+	          t.setDescription(description);
+	          t.setDueDate(due_date);
+	     
+
 	          t.setCompleted(false);
 	          t.saveEventually();
 	          mAdapter.insert(t, 0);
@@ -136,6 +167,61 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	      }
 	  }
 	
+	public static String monthname(int m){
+		 String mn = "Month Name";
+		
+		if (m == 0 )
+        {
+      	  mn="January";
+        } 
+        if (m == 1)
+        {
+      	  mn="February";
+        }
+        if (m == 2 )
+        {
+      	  mn="March";
+        } 
+        if (m == 3)
+        {
+      	  mn="April";
+        }
+        if (m == 4 )
+        {
+      	  mn="May";
+        } 
+        if (m == 5)
+        {
+      	  mn="June";
+        }
+        if (m == 6 )
+        {
+      	  mn="July";
+        } 
+        if (m == 7)
+        {
+      	  mn="August";
+        }
+        if (m == 8)
+        {
+      	  mn="September";
+        }
+        if (m == 9 )
+        {
+      	  mn="October";
+        } 
+        if (m == 10)
+        {
+      	  mn="November";
+        }
+        if (m == 11 )
+        {
+      	  mn="December";
+        } 
+       
+        
+        return mn;
+	}
 
 	@Override 
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //from parse tutorial
@@ -159,6 +245,98 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			taskDescription.setBackgroundColor(Color.TRANSPARENT);
 		}
 	}
+	//button listener for date to call datepicker
+
+
+	// display current date both on the text view and the Date Picker when the application starts.
+	public void setCurrentDate() {
+
+		text_date = (TextView) findViewById(R.id.text_date);
+		
+
+		final Calendar calendar = Calendar.getInstance();
+
+		year = calendar.get(Calendar.YEAR);
+		month = calendar.get(Calendar.MONTH);
+		day = calendar.get(Calendar.DAY_OF_MONTH);
+
+		// set current date into textview
+		text_date.setText(new StringBuilder()
+			// Month is 0 based, so you have to add 1
+			.append(month + 1).append("-")
+			.append(day).append("-")
+			.append(year).append(" "));
+
+		
+
+	}
+	
+	
+	
+	
+	public void addButtonListener() 
+	{
+		 
+		button = (Button) findViewById(R.id.change_date_button);
+ 
+		button.setOnClickListener(new View.OnClickListener() {
+
+			@SuppressWarnings("deprecation")
+			public void onClick(View view) 
+			
+			{
+				showDialog(DATE_DIALOG_ID);
+			}
+ 
+		});
+ 
+	}
+	
+	@Override
+	protected Dialog onCreateDialog (int id){
+		
+		switch (id) {
+		case DATE_DIALOG_ID:
+			//set date icker as current date
+			return new DatePickerDialog(this, datePickerListener, year, month, day);
+		}
+		
+		return null;
+	}
+	
+	
+	private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+
+		// when dialog box is closed, below method will be called.
+		public void onDateSet(DatePicker view, int selectedYear,int selectedMonth, int selectedDay) {
+			year = selectedYear;
+			month = selectedMonth;
+			day = selectedDay;
+
+			// set selected date into Text View
+			text_date.setText(new StringBuilder().append(month + 1)
+			   .append("-").append(day).append("-").append(year).append(" "));
+
+			// set selected date into Date Picker
+			//date_picker.init(year, month, day, null);
+
+		}
+	};
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//public void setdate( )
 	
 	//public void showDatePickerDialog(View v) {
 	    //DialogFragment newFragment = new DatePickerFragment();

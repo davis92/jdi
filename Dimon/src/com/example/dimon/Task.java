@@ -23,10 +23,21 @@ public class Task extends ParseObject{
       return getString("description");
   }
 
+  public void setDueDate(String duedate){
+      put("DueDate", duedate);
+  }
+  
+  public String getDueDate(){
+      return getString("DueDate");
+  }
+
   public void setDescription(String description){
       put("description", description);
   }
+  
   public void setUser(ParseUser currentUser) {
 		put("user", currentUser);
 	}
+  
+  
 }

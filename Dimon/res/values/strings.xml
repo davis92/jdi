@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="task_date">Due Date</string>
     <string name="app_name">JDi</string>
     <string name="task_hint">What\'s the task?</string>
     <string name="action_settings">Settings</string>
