@@ -43,7 +43,13 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	TaskOwedToMe task;
 	TextView taskDescription2;
 	
-	
+	//for date
+		private TextView text_date2;
+		private Button change_date_button2;
+		private int year;
+		private int month;
+		private int day;
+		static final int DATE_DIALOG_ID = 100;
 	
 	
 	@Override
@@ -71,7 +77,9 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		
 		updateData();
 		addListenerOnButton();
-		
+		//date
+		setCurrentDate();
+		addButton2Listener();
 		
 		
 		
@@ -123,7 +131,10 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	          p.setACL(new ParseACL(ParseUser.getCurrentUser()));
 	          p.setUser(ParseUser.getCurrentUser());
 	          String description = mTaskInput2.getText().toString();
-	         
+	         //for date
+	          String Month_Name2 = monthname(month);
+	          String due_date = "/n Due: "+ Month_Name2 + " "+ day + ", "+year;
+	          description = description + due_date;
 	          p.setDescription(description);
 	       
 	          
@@ -135,7 +146,61 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	  }
 
 	
-
+	public static String monthname(int m){
+		 String mn = "Month Name";
+		
+		if (m == 0 )
+       {
+     	  mn="January";
+       } 
+       if (m == 1)
+       {
+     	  mn="February";
+       }
+       if (m == 2 )
+       {
+     	  mn="March";
+       } 
+       if (m == 3)
+       {
+     	  mn="April";
+       }
+       if (m == 4 )
+       {
+     	  mn="May";
+       } 
+       if (m == 5)
+       {
+     	  mn="June";
+       }
+       if (m == 6 )
+       {
+     	  mn="July";
+       } 
+       if (m == 7)
+       {
+     	  mn="August";
+       }
+       if (m == 8)
+       {
+     	  mn="September";
+       }
+       if (m == 9 )
+       {
+     	  mn="October";
+       } 
+       if (m == 10)
+       {
+     	  mn="November";
+       }
+       if (m == 11 )
+       {
+     	  mn="December";
+       } 
+      
+       
+       return mn;
+	}
 	
 	
 	@Override //from parse tutorial
@@ -169,6 +234,82 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	}
 	
 	
+	
+	//Date code
+	// display current date on the text view 
+		public void setCurrentDate() {
+
+			text_date2 = (TextView) findViewById(R.id.text_date2);
+			
+
+			final Calendar calendar = Calendar.getInstance();
+
+			year = calendar.get(Calendar.YEAR);
+			month = calendar.get(Calendar.MONTH);
+			day = calendar.get(Calendar.DAY_OF_MONTH);
+
+			// set current date into textview
+			text_date2.setText(new StringBuilder()
+				// Month is 0 based, so you have to add 1
+				.append(month + 1).append("-")
+				.append(day).append("-")
+				.append(year).append(" "));
+
+			
+
+		}
+		
+		
+		
+		
+		public void addButton2Listener() 
+		{
+			 
+			change_date_button2 = (Button) findViewById(R.id.change_date_button2);
+	 
+			change_date_button2.setOnClickListener(new View.OnClickListener() {
+
+				@SuppressWarnings("deprecation")
+				public void onClick(View view) 
+				
+				{
+					showDialog(DATE_DIALOG_ID);
+				}
+	 
+			});
+	 
+		}
+		
+		
+		
+		@Override
+		protected Dialog onCreateDialog (int id){
+			
+			switch (id) {
+			case DATE_DIALOG_ID:
+				//set date picker as current date
+				return new DatePickerDialog(this, datePickerListener, year, month, day);
+			}
+			
+			return null;
+		}
+		
+		
+		private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+
+			// when dialog box is closed, below method will be called.
+			public void onDateSet(DatePicker view, int selectedYear,int selectedMonth, int selectedDay) {
+				year = selectedYear;
+				month = selectedMonth;
+				day = selectedDay;
+
+				// set selected date into Text View
+				text_date2.setText(new StringBuilder().append(month + 1)
+				   .append("-").append(day).append("-").append(year).append(" "));
+
+			}
+		};
+
 	
 	
 	@Override
