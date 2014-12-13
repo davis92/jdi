@@ -20,13 +20,6 @@ public TaskOwedToMe(){
       put("completed", complete);
   }
   
-  public void setDueDate(String duedate){
-      put("DueDate", duedate);
-  }
-  
-  public String getDueDate(){
-      return getString("DueDate");
-  }
 
   public String getDescription(){
       return getString("description");

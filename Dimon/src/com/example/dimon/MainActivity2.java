@@ -43,18 +43,7 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	TaskOwedToMe task;
 	TextView taskDescription2;
 	
-	//for date
-		private TextView text_date;
-		//private DatePicker date_picker;
-		private Button change_date_button;
-
-		private int year;
-		private int month;
-		private int day;
-		
-
-		
-		static final int DATE_DIALOG_ID = 100;
+	
 	
 	
 	@Override
@@ -83,9 +72,7 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		updateData();
 		addListenerOnButton();
 		
-		//date
-				setCurrentDate();
-				addButtonListener();
+		
 		
 		
 	}
@@ -136,11 +123,9 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	          p.setACL(new ParseACL(ParseUser.getCurrentUser()));
 	          p.setUser(ParseUser.getCurrentUser());
 	          String description = mTaskInput2.getText().toString();
-	          String Month_Name = monthname(month);
-	          String due_date = " Due: "+ Month_Name+ " "+ day + ", "+year;
-	          description = description + due_date;
+	         
 	          p.setDescription(description);
-	          p.setDueDate(due_date);
+	       
 	          
 	          p.setCompleted(false);
 	          p.saveEventually();
@@ -150,62 +135,6 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	  }
 
 	
-	//month name
-	public static String monthname(int m){
-		 String mn = "Month Name";
-		
-		if (m == 0 )
-       {
-     	  mn="January";
-       } 
-       if (m == 1)
-       {
-     	  mn="February";
-       }
-       if (m == 2 )
-       {
-     	  mn="March";
-       } 
-       if (m == 3)
-       {
-     	  mn="April";
-       }
-       if (m == 4 )
-       {
-     	  mn="May";
-       } 
-       if (m == 5)
-       {
-     	  mn="June";
-       }
-       if (m == 6 )
-       {
-     	  mn="July";
-       } 
-       if (m == 7)
-       {
-     	  mn="August";
-       }
-       if (m == 8)
-       {
-     	  mn="September";
-       }
-       if (m == 9 )
-       {
-     	  mn="October";
-       } 
-       if (m == 10)
-       {
-     	  mn="November";
-       }
-       if (m == 11 )
-       {
-     	  mn="December";
-       } 
-      
-       
-       return mn;
-	}
 
 	
 	
@@ -238,87 +167,6 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 			}
 		});
 	}
-	
-	//date methods
-	public void setCurrentDate() {
-
-		text_date = (TextView) findViewById(R.id.text_date);
-		
-
-		final Calendar calendar = Calendar.getInstance();
-
-		year = calendar.get(Calendar.YEAR);
-		month = calendar.get(Calendar.MONTH);
-		day = calendar.get(Calendar.DAY_OF_MONTH);
-
-		// set current date into textview
-		text_date.setText(new StringBuilder()
-			// Month is 0 based, so you have to add 1
-			.append(month + 1).append("-")
-			.append(day).append("-")
-			.append(year).append(" "));
-
-		
-
-	}
-	
-	
-	
-	
-	public void addButtonListener() 
-	{
-		 
-		button3 = (Button) findViewById(R.id.change_date_button);
- 
-		button3.setOnClickListener(new View.OnClickListener() {
-
-			@SuppressWarnings("deprecation")
-			public void onClick(View view) 
-			
-			{
-				showDialog(DATE_DIALOG_ID);
-			}
- 
-		});
- 
-	}
-	
-	@Override
-	protected Dialog onCreateDialog (int id){
-		
-		switch (id) {
-		case DATE_DIALOG_ID:
-			//set date icker as current date
-			return new DatePickerDialog(this, datePickerListener, year, month, day);
-		}
-		
-		return null;
-	}
-	
-	
-	private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
-
-		// when dialog box is closed, below method will be called.
-		public void onDateSet(DatePicker view, int selectedYear,int selectedMonth, int selectedDay) {
-			year = selectedYear;
-			month = selectedMonth;
-			day = selectedDay;
-
-			// set selected date into Text View
-			text_date.setText(new StringBuilder().append(month + 1)
-			   .append("-").append(day).append("-").append(year).append(" "));
-
-			// set selected date into Date Picker
-			//date_picker.init(year, month, day, null);
-
-		}
-	};
-
-
-	
-	
-	
-	
 	
 	
 	
