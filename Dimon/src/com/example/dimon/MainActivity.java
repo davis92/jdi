@@ -53,15 +53,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	
 	//for date
 	private TextView text_date;
-	//private DatePicker date_picker;
 	private Button change_date_button;
-
 	private int year;
 	private int month;
 	private int day;
-	
-
-	
 	static final int DATE_DIALOG_ID = 100;
 	
 	
@@ -245,7 +240,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			taskDescription.setBackgroundColor(Color.TRANSPARENT);
 		}
 	}
-	//button listener for date to call datepicker
+	//Date Code
 
 
 	// display current date both on the text view and the Date Picker when the application starts.
@@ -292,6 +287,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
  
 	}
 	
+	
+	
 	@Override
 	protected Dialog onCreateDialog (int id){
 		
@@ -325,23 +322,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//public void setdate( )
-	
-	//public void showDatePickerDialog(View v) {
-	    //DialogFragment newFragment = new DatePickerFragment();
-	    //newFragment.show(getFragmentManager(), "datePicker");
-	//}
+
 	
 	///this is the sign out function. A few bugs I'll figure this out if we have time.
 	

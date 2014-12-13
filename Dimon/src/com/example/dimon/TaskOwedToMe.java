@@ -24,6 +24,14 @@ public TaskOwedToMe(){
   public String getDescription(){
       return getString("description");
   }
+  
+  public void setDueDate(String duedate){
+      put("DueDate", duedate);
+  }
+  
+  public String getDueDate(){
+      return getString("DueDate");
+  }
 
   public void setDescription(String description){
       put("description", description);
