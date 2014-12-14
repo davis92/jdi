@@ -40,6 +40,9 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
 	private EditText mTaskInput; //this describes what is in the textbox field
 	private ListView mListView;// this is the view that is under textbox
+	//for who
+	private EditText mWhoInput; //this describes who the task involves
+	
 	private TaskAdapter mAdapter;//this is used to covert EditText into ListView
 	Button button;
 	Intent intent;
@@ -79,7 +82,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		
 		mTaskInput = (EditText) findViewById(R.id.task_input);
 		mListView = (ListView) findViewById(R.id.task_list);
-		
+		//who input
+		mWhoInput = (EditText) findViewById(R.id.who_input);
 		mAdapter = new TaskAdapter(this, mainList);
 		mListView.setAdapter(mAdapter);
 		mListView.setOnItemClickListener(this);
@@ -145,20 +149,30 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	{
 	      if (mTaskInput.getText().length() >= 1){
 	          Task t = new Task();
+	          //string for who
+	          String who = "This is who the task involes";
 	          t.setACL(new ParseACL(ParseUser.getCurrentUser()));
 	          t.setUser(ParseUser.getCurrentUser());
 	          String description = mTaskInput.getText().toString();
+	          //who loops
+	          if(mWhoInput.getText().length()>=1){
+        			who = mWhoInput.getText().toString();
+        	}
+	          
 	          String Month_Name = monthname(month);
 	          String due_date = "\nDue: "+ Month_Name+ " "+ day + ", "+year;
-	          description = description + due_date;
+	          who = "\nWho: "+ who;
+	          description = description +who+ due_date;
 	          t.setDescription(description);
 	          t.setDueDate(due_date);
+	          t.setwho(who);
 	     
 
 	          t.setCompleted(false);
 	          t.saveEventually();
 	          mAdapter.insert(t, 0);
 	          mTaskInput.setText("");
+	          mWhoInput.setText("");
 	      }
 	  }
 	

@@ -32,6 +32,14 @@ public TaskOwedToMe(){
   public String getDueDate(){
       return getString("DueDate");
   }
+  
+  public void setwho(String who){
+      put("who", who);
+  }
+  
+  public String getwho(){
+      return getString("who");
+  }
 
   public void setDescription(String description){
       put("description", description);

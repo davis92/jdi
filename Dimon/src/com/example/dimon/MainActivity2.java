@@ -34,6 +34,8 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 
 	private EditText mTaskInput2; //this describes what is in the textbox field
 	private ListView mListView2;// this is the view that is under textbox
+	//for who
+	private EditText mWhoInput2; //this describes who the task involves
 	private TaskAdapterOwedToMe mAdapter2;//this is used to covert EditText into ListView
 	Button button3;
 	Intent intent;
@@ -70,6 +72,8 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		
 		mTaskInput2 = (EditText) findViewById(R.id.task_input2);
 		mListView2 = (ListView) findViewById(R.id.task_list2);
+		//who input
+		mWhoInput2 = (EditText) findViewById(R.id.who_input2);
 		
 		mAdapter2 = new TaskAdapterOwedToMe (this, new ArrayList<TaskOwedToMe>()); //Davis to Davis - fix this later
 		mListView2.setAdapter(mAdapter2);
@@ -128,20 +132,27 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	{
 	      if (mTaskInput2.getText().length() >= 1){
 	    	  TaskOwedToMe p = new TaskOwedToMe();
+	    	  //string for who
+	    	  String who ="This is who the task involves";
 	          p.setACL(new ParseACL(ParseUser.getCurrentUser()));
 	          p.setUser(ParseUser.getCurrentUser());
 	          String description = mTaskInput2.getText().toString();
+	          //who loops
+	      		if(mWhoInput2.getText().length()>=1){
+      			who = mWhoInput2.getText().toString();
+	      		}
 	         //for date
 	          String Month_Name2 = monthname(month);
 	          String due_date = "\nDue: "+ Month_Name2 + " "+ day + ", "+year;
-	          description = description + due_date;
+	          who = "\nWho: "+who;
+	          description = description + who+ due_date;
 	          p.setDescription(description);
-	       
-	          
+	          p.setwho(who);
 	          p.setCompleted(false);
 	          p.saveEventually();
 	          mAdapter2.insert(p, 0);
 	          mTaskInput2.setText("");
+	          mWhoInput2.setText("");
 	      }
 	  }
 

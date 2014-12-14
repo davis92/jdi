@@ -72,6 +72,15 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white" />
+        
+     <EditText
+            android:id="@+id/who_input2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" 
+            android:windowSoftInputMode="stateHidden"
+            android:hint="@string/who_hint"
+            android:inputType="text"/>
      
     </LinearLayout>
  
