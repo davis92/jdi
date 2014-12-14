@@ -133,7 +133,7 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 	          String description = mTaskInput2.getText().toString();
 	         //for date
 	          String Month_Name2 = monthname(month);
-	          String due_date = "/n Due: "+ Month_Name2 + " "+ day + ", "+year;
+	          String due_date = "\nDue: "+ Month_Name2 + " "+ day + ", "+year;
 	          description = description + due_date;
 	          p.setDescription(description);
 	       
@@ -222,15 +222,8 @@ public class MainActivity2 extends Activity implements OnItemClickListener {
 		if (backgroundColor == cyan){
 			mAdapter2.remove(task);
 			task.deleteEventually();
+			taskDescription2.setBackgroundColor(Color.TRANSPARENT);
 		}
-		deleteButton = (Button) findViewById(R.id.deleteButton);
-		deleteButton.setOnLongClickListener(new View.OnLongClickListener() { //sets up delete all function upon 
-			public boolean onLongClick(View v) {                            //holding down on the delete button
-				mAdapter2.clear();
-				task.deleteEventually();
-				return true;
-			}
-		});
 	}
 	
 	

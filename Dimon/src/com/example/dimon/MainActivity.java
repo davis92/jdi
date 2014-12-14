@@ -149,7 +149,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	          t.setUser(ParseUser.getCurrentUser());
 	          String description = mTaskInput.getText().toString();
 	          String Month_Name = monthname(month);
-	          String due_date = "/n Due: "+ Month_Name+ " "+ day + ", "+year;
+	          String due_date = "\nDue: "+ Month_Name+ " "+ day + ", "+year;
 	          description = description + due_date;
 	          t.setDescription(description);
 	          t.setDueDate(due_date);

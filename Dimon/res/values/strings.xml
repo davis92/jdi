@@ -20,9 +20,6 @@
     <string name="close_app">Close app</string>
     <string name="sign_close">Sign out and close app</string>
     <string name ="delete_button">Delete</string>
-    <string name ="dialog_question">Are you sure you want to delete all?</string>
-    <string name ="dialog_yes">yes</string>
-    <string name ="dialog_no">no</string>
     <string name ="date">Date</string>
     <color name ="darkblue">#000080</color>
     <color name = "white">#ffffff</color>
