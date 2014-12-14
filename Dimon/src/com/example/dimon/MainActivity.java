@@ -150,7 +150,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	      if (mTaskInput.getText().length() >= 1){
 	          Task t = new Task();
 	          //string for who
-	          String who = "This is who the task involes";
+	          String who = "Not specified";
 	          t.setACL(new ParseACL(ParseUser.getCurrentUser()));
 	          t.setUser(ParseUser.getCurrentUser());
 	          String description = mTaskInput.getText().toString();
@@ -162,7 +162,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	          String Month_Name = monthname(month);
 	          String due_date = "\nDue: "+ Month_Name+ " "+ day + ", "+year;
 	          who = "\nWho: "+ who;
-	          description = description +who+ due_date;
+	          description = "Task: " + description +who+ due_date;
 	          t.setDescription(description);
 	          t.setDueDate(due_date);
 	          t.setwho(who);

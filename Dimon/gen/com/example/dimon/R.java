@@ -1102,8 +1102,8 @@ containing a value of this type.
         public static final int button1=0x7f050043;
         public static final int button2=0x7f050044;
         public static final int button3=0x7f05004a;
-        public static final int change_date_button=0x7f05003f;
-        public static final int change_date_button2=0x7f050046;
+        public static final int change_date_button=0x7f050040;
+        public static final int change_date_button2=0x7f050047;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
@@ -1163,14 +1163,14 @@ containing a value of this type.
         public static final int task_input2=0x7f050045;
         public static final int task_list=0x7f050042;
         public static final int task_list2=0x7f050049;
-        public static final int text_date=0x7f050040;
-        public static final int text_date2=0x7f050047;
+        public static final int text_date=0x7f050041;
+        public static final int text_date2=0x7f050048;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
-        public static final int who_input=0x7f050041;
-        public static final int who_input2=0x7f050048;
+        public static final int who_input=0x7f05003f;
+        public static final int who_input2=0x7f050046;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1279,27 +1279,28 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int action_settings=0x7f0a0011;
-        public static final int action_so=0x7f0a001d;
-        public static final int add_button=0x7f0a0012;
+        public static final int action_settings=0x7f0a0012;
+        public static final int action_so=0x7f0a001e;
+        public static final int add_button=0x7f0a0013;
         public static final int app_name=0x7f0a000e;
-        public static final int close_app=0x7f0a001e;
-        public static final int credit=0x7f0a0015;
-        public static final int date=0x7f0a0021;
-        public static final int debt=0x7f0a0016;
-        public static final int delete_button=0x7f0a0020;
-        public static final int have_account=0x7f0a001a;
-        public static final int i_owe=0x7f0a0013;
-        public static final int in=0x7f0a001b;
-        public static final int need_account=0x7f0a0019;
-        public static final int owe_me=0x7f0a0014;
-        public static final int pass=0x7f0a0017;
-        public static final int sign_close=0x7f0a001f;
+        public static final int close_app=0x7f0a001f;
+        public static final int credit=0x7f0a0016;
+        public static final int date=0x7f0a0022;
+        public static final int debt=0x7f0a0017;
+        public static final int delete_button=0x7f0a0021;
+        public static final int have_account=0x7f0a001b;
+        public static final int i_owe=0x7f0a0014;
+        public static final int in=0x7f0a001c;
+        public static final int need_account=0x7f0a001a;
+        public static final int owe_me=0x7f0a0015;
+        public static final int pass=0x7f0a0018;
+        public static final int sign_close=0x7f0a0020;
         public static final int task_date=0x7f0a000d;
         public static final int task_hint=0x7f0a000f;
-        public static final int up=0x7f0a001c;
-        public static final int user=0x7f0a0018;
+        public static final int up=0x7f0a001d;
+        public static final int user=0x7f0a0019;
         public static final int who_hint=0x7f0a0010;
+        public static final int who_hint2=0x7f0a0011;
     }
     public static final class style {
         /** 
